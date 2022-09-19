@@ -15,6 +15,19 @@ services:
   #   ports:
   #     - "4000:3000"
   #   image: mongoclient/mongoclient:latest
+  mariadb:
+    container_name: mariadb
+    image: mariadb:latest
+    restart: 'always'
+    ports:
+      - 3306:3306
+    volumes:
+      - ~/apps/mariadb:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpass
+      - MYSQL_PASSWORD="pass"
+      - MYSQL_USER="user"
+      - MYSQL_DATABASE=testDB
 
 volumes:
   mongodb-data: {}
